@@ -13,16 +13,17 @@ public class ChatBot {
         guessAge(scanner);
         countToNumber(scanner);
         testProgrammingKnowledge(scanner);
+        tellStory(name);
 
         scanner.close();
     }
 
     private static void greetUser() {
-        System.out.println("Hello! world.");
+        System.out.println("Hello!");
     }
 
     private static String getUserInput(Scanner scanner) {
-        System.out.print("Enter your name: ");
+        System.out.print("Please enter your name: ");
         return scanner.nextLine();
     }
 
@@ -35,7 +36,7 @@ public class ChatBot {
         System.out.print("Enter the sum of the digits of your age: ");
         int sumOfDigits = scanner.nextInt();
 
-        int age = sumOfDigits * 2;  // This is a simple guessing method for demonstration
+        int age = (sumOfDigits * 9) % 100;  // Improved guessing method
         System.out.println("I guess your age is: " + age);
     }
 
@@ -50,23 +51,35 @@ public class ChatBot {
 
     private static void testProgrammingKnowledge(Scanner scanner) {
         System.out.println("Let's test your programming knowledge.");
-        System.out.println("What is the correct syntax to output 'Hello World' in Java?");
-        System.out.println("1. echo 'Hello World'");
-        System.out.println("2. Console.WriteLine('Hello World')");
-        System.out.println("3. System.out.println('Hello World')");
-        System.out.println("4. printf('Hello World')");
+        System.out.println("Which of the following is used to declare a class in Java?");
+        System.out.println("1. int");
+        System.out.println("2. class");
+        System.out.println("3. void");
+        System.out.println("4. public");
 
         boolean correct = false;
-        while (!correct) {
-            System.out.print("Enter the number of your answer: ");
-            int answer = scanner.nextInt();
 
-            if (answer == 3) {
-                System.out.println("Correct! Well done.");
-                correct = true;
-            } else {
-                System.out.println("Incorrect. Try again.");
+        while (!correct) {
+            System.out.print("Your answer choice is : ");
+            int userChoice = scanner.nextInt();
+
+            switch (userChoice) {
+                case 2:
+                    System.out.println("Correct! Well done.");
+                    correct = true;
+                    break;
+                default:
+                    System.out.println("Incorrect. Try again.");
+                    break;
             }
         }
+    }
+
+    private static void tellStory(String name) {
+        System.out.println("Let me tell you a story about you, " + name + ".");
+        System.out.println("Once upon a time, there was a person named " + name + " who was curious and eager to learn.");
+        System.out.println(name + " met a chatbot that could guess ages, count numbers, and test programming knowledge.");
+        System.out.println("Through this journey, " + name + " discovered the joy of learning and the fun of interacting with chatbot.");
+        System.out.println("And they lived happily ever after, coding and exploring new skills.");
     }
 }
